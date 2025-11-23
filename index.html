@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Smart Man | د. أيمن القاضي</title>
+    
+    <!-- Google Fonts: Tajawal for modern Arabic typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Config for Brand Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlack: '#050505',
+                        brandDark: '#121212',
+                        brandGold: '#D4AF37',
+                        brandGoldLight: '#FFD700',
+                        brandGreen: '#39FF14', // Neon Phosphorescent Green
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neon-green': '0 0 10px #39FF14, 0 0 20px #39FF14',
+                        'neon-gold': '0 0 10px #D4AF37, 0 0 20px #D4AF37',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: white;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #39FF14;
+        }
+
+        /* Animation Classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #D4AF37, #FDB931, #39FF14);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-bg {
+            background-image: 
+                linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)),
+                url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(57, 255, 20, 0.3);
+            border-color: #39FF14;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-brandBlack/90 backdrop-blur-md border-b border-brandGold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 cursor-pointer">
+                    <h1 class="text-2xl font-bold tracking-tighter text-white">AI <span class="text-brandGreen">Smart</span> Man</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4 space-x-reverse">
+                        <a href="#home" class="hover:text-brandGreen px-3 py-2 rounded-md text-sm font-medium transition duration-300">الرئيسية</a>
+                        <a href="#about" class="hover:text-brandGreen px-3 py-2 rounded-md text-sm font-medium transition duration-300">عن الكورس</a>
+                        <a href="#syllabus" class="hover:text-brandGreen px-3 py-2 rounded-md text-sm font-medium transition duration-300">المنهج</a>
+                        <a href="#instructor" class="hover:text-brandGreen px-3 py-2 rounded-md text-sm font-medium transition duration-300">المحاضر</a>
+                        <a href="https://wa.me/201044144295" target="_blank" class="bg-brandGold hover:bg-brandGreen hover:text-black text-black font-bold px-4 py-2 rounded-full transition duration-300 shadow-neon-gold hover:shadow-neon-green">اشترك الآن</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-brandGold hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brandBlack border-t border-brandGold/20">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="text-gray-300 hover:text-brandGreen block px-3 py-2 rounded-md text-base font-medium">الرئيسية</a>
+                <a href="#about" class="text-gray-300 hover:text-brandGreen block px-3 py-2 rounded-md text-base font-medium">عن الكورس</a>
+                <a href="#syllabus" class="text-gray-300 hover:text-brandGreen block px-3 py-2 rounded-md text-base font-medium">المنهج</a>
+                <a href="#instructor" class="text-gray-300 hover:text-brandGreen block px-3 py-2 rounded-md text-base font-medium">المحاضر</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg h-screen flex items-center justify-center relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-brandBlack"></div>
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto fade-in-up">
+            <span class="text-brandGreen tracking-widest uppercase font-bold text-sm mb-4 block">المستقبل الطبي يبدأ هنا</span>
+            <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                AI <span class="text-brandGold">SMART</span> MAN
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+                حول مشروعك الطبي إلى <span class="text-brandGold font-bold">"براند"</span> عالمي وحقق أقصى استفادة من أدوات الذكاء الاصطناعي.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#syllabus" class="bg-brandGreen text-brandBlack font-bold py-4 px-8 rounded-full shadow-neon-green hover:bg-white transition duration-300 text-lg">
+                    استكشف المحتوى
+                </a>
+                <a href="#about" class="border-2 border-brandGold text-brandGold font-bold py-4 px-8 rounded-full hover:bg-brandGold hover:text-black transition duration-300 text-lg">
+                    لماذا هذا الكورس؟
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section (6 in 1) -->
+    <section id="about" class="py-20 bg-brandBlack">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4"><span class="text-brandGold">6 مجالات</span> في كورس واحد</h2>
+                <p class="text-gray-400 text-lg">المنهج المتكامل للوصول للاكتفاء الذاتي في مشروعك الطبي</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-brandDark border border-gray-800 p-8 rounded-2xl card-hover transition-all duration-300 fade-in-up">
+                    <div class="text-brandGreen text-4xl mb-4"><i class="fas fa-paint-brush"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-2">التصميم (Design)</h3>
+                    <p class="text-gray-400">تعلم أساسيات التصميم وتطبيقها لإنشاء هوية بصرية قوية.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-brandDark border border-gray-800 p-8 rounded-2xl card-hover transition-all duration-300 fade-in-up" style="transition-delay: 100ms;">
+                    <div class="text-brandGold text-4xl mb-4"><i class="fas fa-bullhorn"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-2">التسويق (Marketing)</h3>
+                    <p class="text-gray-400">استراتيجيات مخصصة للقطاع الطبي مدعومة بأدوات الذكاء الاصطناعي.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-brandDark border border-gray-800 p-8 rounded-2xl card-hover transition-all duration-300 fade-in-up" style="transition-delay: 200ms;">
+                    <div class="text-brandGreen text-4xl mb-4"><i class="fas fa-fingerprint"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-2">البراندينج (Branding)</h3>
+                    <p class="text-gray-400">كيفية بناء علامة تجارية شخصية أو مؤسسية راسخة في الأذهان.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="bg-brandDark border border-gray-800 p-8 rounded-2xl card-hover transition-all duration-300 fade-in-up" style="transition-delay: 300ms;">
+                    <div class="text-brandGold text-4xl mb-4"><i class="fas fa-robot"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-2">الذكاء الاصطناعي (AI)</h3>
+                    <p class="text-gray-400">تطبيقات عملية للـ AI لتحليل البيانات وأتمتة المهام الطبية.</p>
+                </div>
+                <!-- Feature 5 -->
+                <div class="bg-brandDark border border-gray-800 p-8 rounded-2xl card-hover transition-all duration-300 fade-in-up" style="transition-delay: 400ms;">
+                    <div class="text-brandGreen text-4xl mb-4"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-2">زيادة المبيعات (Sales)</h3>
+                    <p class="text-gray-400">أساليب نفسية وتقنية لتحويل المتابعين إلى عملاء فعليين.</p>
+                </div>
+                <!-- Feature 6 -->
+                <div class="bg-brandDark border border-gray-800 p-8 rounded-2xl card-hover transition-all duration-300 fade-in-up" style="transition-delay: 500ms;">
+                    <div class="text-brandGold text-4xl mb-4"><i class="fas fa-headset"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-2">خدمة العملاء</h3>
+                    <p class="text-gray-400">إدارة تجربة المرضى والعملاء باحترافية لضمان الولاء.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Syllabus Section -->
+    <section id="syllabus" class="py-20 relative overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-brandGreen/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-brandGold/5 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">محتوى <span class="text-brandGreen">المحاضرات</span></h2>
+                <div class="w-24 h-1 bg-brandGold mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Syllabus Items - Left Column -->
+                <div class="space-y-4">
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGold hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGold font-bold ml-2">01.</span> Introduction to AI and Prompt Engineering
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGreen hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGreen font-bold ml-2">02.</span> Definition To Master AI (شرح المصطلحات)
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGold hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGold font-bold ml-2">03.</span> AI Agent and Data Analysis By AI
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGreen hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGreen font-bold ml-2">04.</span> How To Be Brand By AI (بناء العلامة التجارية)
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGold hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGold font-bold ml-2">05.</span> Personal Branding & AI Photos
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGreen hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGreen font-bold ml-2">06.</span> Audio Tools (استنساخ وإنشاء الأصوات)
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGold hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGold font-bold ml-2">07.</span> Lip Sync Video (فيديوهات بمزامنة الشفاه)
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGreen hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGreen font-bold ml-2">08.</span> Image Tools (تصميم الصور كالمحترفين)
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGold hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGold font-bold ml-2">09.</span> Product Professionalism & POV/CGI Videos
+                    </div>
+                </div>
+
+                <!-- Syllabus Items - Right Column -->
+                <div class="space-y-4">
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGreen hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGreen font-bold ml-2">10.</span> Design Without AI - Part 1 (مبادئ التصميم)
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGold hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGold font-bold ml-2">11.</span> Design Without AI - Part 2 (تطبيقات تسويقية)
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGreen hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGreen font-bold ml-2">12.</span> Video Editing (تقنيات المونتاج)
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGold hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGold font-bold ml-2">13.</span> Podcast Making (من الفكرة للنشر)
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGreen hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGreen font-bold ml-2">14.</span> Websites Making By AI (إنشاء المواقع)
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGold hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGold font-bold ml-2">15.</span> Websites Course Site & Personal Assistants
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGreen hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGreen font-bold ml-2">16.</span> Marketing and Content Creation By AI
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGold hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGold font-bold ml-2">17.</span> LinkedIn and Customer Dealing Art
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-lg border-r-4 border-brandGreen hover:bg-white/10 transition fade-in-up">
+                        <span class="text-brandGreen font-bold ml-2">18.</span> محاضرة تطبيقية ومشروع عملي
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor Section -->
+    <section id="instructor" class="py-20 bg-brandDark border-t border-gray-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-black/50 rounded-3xl p-8 md:p-12 border border-brandGold/30 flex flex-col md:flex-row items-center gap-12 shadow-2xl">
+                
+                <!-- Instructor Image -->
+                <div class="w-full md:w-1/3 flex justify-center fade-in-up">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-brandGold rounded-full blur-md opacity-50"></div>
+                        <!-- IMPORTANT: If running locally, make sure the image path is correct -->
+                        <img src="https://i.postimg.cc/mktt3HKk/Make-him-look-202511150001.png" 
+                             alt="د. أيمن القاضي" 
+                             class="relative w-64 h-64 md:w-72 md:h-72 object-cover rounded-full border-4 border-brandGreen shadow-neon-green"
+                             onerror="this.src='https://via.placeholder.com/300x300/121212/D4AF37?text=Dr.+Ayman'">
+                    </div>
+                </div>
+
+                <!-- Instructor Info -->
+                <div class="w-full md:w-2/3 text-center md:text-right fade-in-up">
+                    <h2 class="text-3xl font-bold text-white mb-2">د. أيمن القاضي</h2>
+                    <h3 class="text-xl text-brandGold mb-6">Professional AI Trainer</h3>
+                    
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-university text-brandGreen"></i>
+                            <span>محاضر ذكاء اصطناعي محترف في عدة جامعات مصرية.</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-certificate text-brandGreen"></i>
+                            <span>حاصل على دبلومة تسويق (الأكاديمية البحرية) وجودة (أكاديمية السادات).</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-hospital text-brandGreen"></i>
+                            <span>مدير تسويق سابق لمستشفى مبرة النهضة الحديثة بالإسكندرية.</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-briefcase-medical text-brandGreen"></i>
+                            <span>خبرة 8 سنوات في سلسلة صيدليات كبرى (Oplus) بالسعودية.</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-laptop-code text-brandGreen"></i>
+                            <span>مؤسس كورس Dr.AI وكورس AI Smart Man.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-brandGold/20 py-10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-4">AI <span class="text-brandGreen">Smart</span> Man</h2>
+            <p class="text-gray-500 mb-6">جميع الحقوق محفوظة © 2025 - د. أيمن القاضي</p>
+            <div class="flex justify-center space-x-6 space-x-reverse mb-6">
+                <a href="#" class="text-gray-400 hover:text-brandGold text-2xl transition"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-gray-400 hover:text-brandGold text-2xl transition"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-gray-400 hover:text-brandGold text-2xl transition"><i class="fab fa-instagram"></i></a>
+            </div>
+            <a href="https://ai-smart-academy.com" target="_blank" class="text-brandGreen hover:text-brandGold underline">ai-smart-academy.com</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactions -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Run once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
